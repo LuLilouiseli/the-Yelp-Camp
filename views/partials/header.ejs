@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>YelpCamp</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel='stylesheet' href = '/stylesheets/main.css'>
+</head>
+<body>
+	<nav class = "navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">Yelp Sichuan!</a>
+
+		</div>
+		<ul class = "nav navbar-nav navbar-right">
+			<!--add conditions here to adjust when user is not logged in-->
+			<%if(!currentUser){%>
+				<li><a href="/login">Log in</a></li>
+				<li><a href="/register">Sign up</a></li>
+			<%}else{%>
+				<li><a>Signed in As: <%=currentUser.username%></a></li>
+				<li><a href="/logout">Log out</a></li>
+			<%}%>
+
+		</ul>
+
+	</div>
+</nav>
+
+<div class ='container'>
+<%if(error && error.length>0){%>
+	<div class="alert alert-danger" role = 'alert'>
+			<%=error %>
+		</div>
+<%}%>
+<%if(success && success.length>0){%>
+<div class="alert alert-success" role = 'alert'>
+	<%=success %>
+</div>
+<%}%>
+</div>
